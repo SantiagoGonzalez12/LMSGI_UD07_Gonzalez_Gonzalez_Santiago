@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="report_invoice_willmantech">
+    <t t-call="web.external_layout">
+        <div class="page">
+            <h2>Factura: <span t-field="doc.name"/></h2>
+            <p>Fecha de Emisión: <span t-field="doc.date"/></p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th class="text-right">Cantidad</th>
+                        <th class="text-right">Precio Unitario</th>
+                        <th t-if="any(l.discount > 0 for l in doc.invoice_line_ids)" class="text-right">Descuento (%)</th>
+                        <th class="text-right">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="doc.invoice_line_ids" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-field="line.name" />
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.quantity" />
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_unit" />
+                            </td>
+                            <td class="text-right" t-if="line.discount > 0">
+                                <span t-field="line.discount" />
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_subtotal" />
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            
+            <div class="text-right">
+                <p><strong>Total: </strong><span t-field="doc.amount_total"/></p>
+            </div>
+        </div>
+    </t>
+</template>
