@@ -1,0 +1,28 @@
+[
+    {
+        "invoice_id": 12345,
+        "customer": {
+            "id": 9042,
+            "name": "Cliente Ejemplo",
+            "email": "contacto@cliente.com"
+        },
+
+        "invoice_lines":  [
+            {
+                "description": "Producto A",
+                "quantity": 2,
+                "unit_price": 50.00,
+                "subtotal": 100.00
+            },
+            {
+                "description": "Servicio B",
+                "quantity": 1,
+                "unit_price": 150.00,
+                "subtotal": 150.00
+            }
+        ],
+        "tax_base": 250.00,
+        "total_amount": 302.50,
+        "currency": "€"
+    }
+]
