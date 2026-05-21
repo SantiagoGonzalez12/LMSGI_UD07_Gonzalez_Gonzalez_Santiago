@@ -41,3 +41,13 @@ Bashdocker exec -t db_container pg_dump -U odoo_user odoo_db > backup_willmantec
 ```
 * **Almacenes de Datos**: Además de la base de datos relacional, se deben respaldar los volúmenes de filestore que contienen los documentos adjuntos y las firmas de facturas. 
 * **Frecuencia**: Se recomienda un respaldo diario automatizado fuera de las horas de mayor carga operativa. 
+
+
+## 5. Flujo Operativo de Facturación e Informes
+El proceso de exportación de datos permite transformar transacciones comerciales en documentos legales y estructuras de intercambio. 
+* **Validación**: El usuario comercial o contable valida el pedido de venta para generar la factura. 
+* **Renderizado del Informe**:
+    * El motor _QWeb_ procesa la plantilla XML ([report_invoice_willmantech.xml](report_invoice_willmantech.xml)) inyectando los datos de la base de datos mediante directivas _t-field_ y _t-foreach_. 
+    * El sistema aplica la lógica condicional _t-if_ para determinar qué columnas mostrar. 
+* **Pipeline de Salida**: El sistema sigue el flujo _HTML -> wkhtmltopdf -> PDF_, generando el archivo final para el cliente. 
+* **Interoperabilidad**: Los datos pueden exportarse en formato _JSON_ para _APIs_ externas o en _XML-UBL_ para plataformas de factura electrónica compatibles.
