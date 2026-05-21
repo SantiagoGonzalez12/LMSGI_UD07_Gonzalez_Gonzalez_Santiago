@@ -31,3 +31,13 @@ La integridad y confidencialidad de la información se gestiona mediante una pol
     * **Contable**: Permisos de creación y validación de facturas, exportación de datos (JSON/UBL) y gestión de impuestos. 
     * **Comercial**: Acceso limitado a la gestión de leads en el CRM y creación de pedidos de venta. 
 * **Políticas de Seguridad**: Se exige el uso de contraseñas complejas y la rotación periódica de las mismas para todos los perfiles.  
+
+
+## 4. Procedimiento de Backup y Restauración
+Se deben realizar respaldos periódicos de la base de datos y los almacenes de datos asociados. 
+* **Comando de Backup (PostgreSQL)**:
+```Bash
+Bashdocker exec -t db_container pg_dump -U odoo_user odoo_db > backup_willmantech_$(date +%F).sql
+```
+* **Almacenes de Datos**: Además de la base de datos relacional, se deben respaldar los volúmenes de filestore que contienen los documentos adjuntos y las firmas de facturas. 
+* **Frecuencia**: Se recomienda un respaldo diario automatizado fuera de las horas de mayor carga operativa. 
