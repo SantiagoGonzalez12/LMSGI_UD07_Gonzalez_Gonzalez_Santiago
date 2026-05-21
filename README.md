@@ -22,3 +22,12 @@ Para garantizar que el sistema esté disponible en entornos productivos, se debe
 * **Configuración de Entorno**: Definir las variables de entorno en el archivo .env (credenciales de DB, puertos y claves maestras). 
 * **Levantamiento del Entorno**: Ejecutar el comando _docker-compose up -d_ para inicializar los contenedores en segundo plano. 
 * **Dependencias del SGBD**: El sistema requiere un volumen persistente para _PostgreSQL_ para evitar la pérdida de datos entre reinicios.
+
+
+## 3. Seguridad y Control de Acceso
+La integridad y confidencialidad de la información se gestiona mediante una política de acceso basado en roles (RBAC). 
+* **Roles**:
+    * **Administrador**: Acceso total a la configuración del sistema, copias de seguridad y gestión de usuarios. 
+    * **Contable**: Permisos de creación y validación de facturas, exportación de datos (JSON/UBL) y gestión de impuestos. 
+    * **Comercial**: Acceso limitado a la gestión de leads en el CRM y creación de pedidos de venta. 
+* **Políticas de Seguridad**: Se exige el uso de contraseñas complejas y la rotación periódica de las mismas para todos los perfiles.  

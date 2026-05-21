@@ -1,6 +1,7 @@
 [
     {
-        "invoice_id": 12345,
+        "invoice_id": "INV-2026-0001",
+        "issue_date": "2026-06-15",
         "customer": {
             "id": 9042,
             "name": "Cliente Ejemplo",
